@@ -31,6 +31,11 @@
 
         /* [DONE] add class 'active' to the correct article */
         targetArticle.classList.add('active');
+
+        /* [DONE PROGRESS] Get and set height for every article */
+        const container = document.querySelector('.posts');
+        const activeHeight = document.querySelector('.posts article.active').offsetHeight;
+        container.style.height = activeHeight + 'px';
     }
 
     const optArticleSelector = '.post',
@@ -66,7 +71,6 @@
         titleList.innerHTML = html;
 
         const links = document.querySelectorAll('.titles a');
-        console.log(links);
     
         for(let link of links){
             link.addEventListener('click', titleClickHandler);
@@ -75,5 +79,7 @@
     }
 
     generateTitleLinks();
+
+    document.querySelector('.posts').style.height = document.querySelector('.posts article.active').offsetHeight + 'px';
 
 }

@@ -46,7 +46,6 @@ body {
 .wrapper {
   display: flex;
   margin-left: 10px;
-  flex-direction: column;
 }
 
 .sidebar {
@@ -128,5 +127,25 @@ body {
   display: flex;
   p {
     margin: 0 10px 0 0;
+  }
+}
+
+/* TESTING VARIABLE HEIGHT TRANSITION */
+
+.posts {
+  transition: all 2s ease;
+}
+
+.post {
+  opacity: 0;
+  z-index: -1;
+  transition: all 2s ease;
+  overflow: hidden;
+  transform: scaleY(0);
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+    transform: scaleY(1);
   }
 }
