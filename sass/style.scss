@@ -22,6 +22,7 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
+  background: #000;
 }
 
 .container {
@@ -95,11 +96,13 @@ body {
 /* All posts */
 
 .all-posts {
+  transition: max-height 2s ease;
+  max-height: 111px;
+
   .section-title {
     position: relative;
     line-height: 32px;
     display: inline-block;
-    cursor: pointer;
   }
   .section-title::after {
     content: "";
@@ -113,23 +116,31 @@ body {
     border-top: 16px solid $color-dark;
     border-bottom: 0px solid transparent;
     transition: all .4s ease;
-    cursor: pointer;
   }
-  .section-title:hover::after, .section-title.active::after {
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-top: 0px solid transparent;
-    border-bottom: 16px solid $color-dark;
-  }
-
   .titles {
     overflow: hidden;
-    max-height: 0;
-    transition: all .4s ease;
+    transition: all 1s ease;
+    opacity: 0;
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      display: inline-block;
+    }
   }
 
-  .titles.active {
-    max-height: 100%;
+  &:hover {
+    max-height: 999px;
+    .titles {
+      opacity: 1;
+    }
+    .section-title::after {
+      border-left: 16px solid transparent;
+      border-right: 16px solid transparent;
+      border-top: 0px solid transparent;
+      border-bottom: 16px solid $color-dark;
+    }
   }
 }
 
@@ -190,4 +201,17 @@ body {
     z-index: 1;
     transform: scaleY(1);
   }
+}
+
+/* Video background */
+
+#myVideo {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.3;
+  z-index: -1;
 }
