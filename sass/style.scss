@@ -4,6 +4,8 @@
 
 $color-light: #fff;
 $color-dark: #444;
+$color-pumpkin: #d35400;
+$color-pomegranate: #f39c12;
 
 $font-logo: 'Sacramento', cursive;
 $font-header: 'Oswald', sans-serif;
@@ -16,17 +18,17 @@ $font-text: 'Source Sans Pro', sans-serif;
 }
 
 body {
-  background: $color-light;
+  background: $color-pumpkin;
   font-family: $font-text;
-  color: $color-dark;
+  color: $color-light;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
-  background: #000;
+  padding: 0;
+  margin: 0;
 }
 
 .container {
-  max-width: 1140px;
   margin: 0 auto;
 }
 
@@ -38,16 +40,25 @@ body {
   span {
     text-transform: none;
     font-weight: 400;
-    color: lighten($color-dark, 20%);
+    color: lighten($color-light, 20%);
   }
+}
+
+a, a > * {
+  text-decoration: none;
+  color: $color-pomegranate;
+  transition: all .4s ease;
+}
+a:hover, a:hover span {
+  font-weight: 900;
 }
 
 /* Layout */
 
 .wrapper {
   display: flex;
-  margin-left: 10px;
   flex-direction: column;
+  padding: 0 20px 50px;
 }
 
 .sidebar {
@@ -60,10 +71,10 @@ body {
 
 .sidebar, .posts {
   background: $color-light;
-  margin-right: 10px;
   padding: 20px;
-  border: 1px solid $color-dark;
-  border-radius: 5px;
+  border: 3px solid $color-pomegranate;
+  margin-bottom: 20px;
+  background-image: url("../images/pattern.png");
 }
 
 /* Logo */
@@ -74,6 +85,7 @@ body {
   font-size: 104px;
   line-height: 1;
   text-align: center;
+  color: $color-light;
 }
 
 /* Lists */
@@ -113,7 +125,7 @@ body {
     height: 0;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
-    border-top: 16px solid $color-dark;
+    border-top: 16px solid $color-light;
     border-bottom: 0px solid transparent;
     transition: all .4s ease;
   }
@@ -139,7 +151,7 @@ body {
       border-left: 16px solid transparent;
       border-right: 16px solid transparent;
       border-top: 0px solid transparent;
-      border-bottom: 16px solid $color-dark;
+      border-bottom: 16px solid $color-light;
     }
   }
 }
@@ -163,7 +175,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding: 20px 20px 40px;
   opacity: 0;
   transition: opacity 1s ease;
   &.active {
@@ -212,6 +224,14 @@ body {
   transform: translate(-50%, -50%);
   min-width: 100%;
   min-height: 100%;
-  opacity: 0.3;
+  opacity: 0.44;
   z-index: -1;
+}
+
+/* Additionals */
+
+.additionals {
+  .tags {
+    columns: 2;
+  }
 }
