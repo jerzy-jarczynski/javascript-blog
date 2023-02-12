@@ -32,7 +32,7 @@
         /* [DONE] add class 'active' to the correct article */
         targetArticle.classList.add('active');
 
-        /* [DONE PROGRESS] Get and set height for every article */
+        /* [DONE] Get and set height for every article */
         const container = document.querySelector('.posts');
         const activeHeight = document.querySelector('.posts article.active').offsetHeight;
         container.style.height = activeHeight + 'px';
@@ -81,5 +81,7 @@
     generateTitleLinks();
 
     document.querySelector('.posts').style.height = document.querySelector('.posts article.active').offsetHeight + 'px';
+
+    document.getElementById('myVideo').play();
 
 }
