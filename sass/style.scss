@@ -37,6 +37,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -49,6 +50,7 @@ a, a > * {
   color: $color-pomegranate;
   transition: all .4s ease;
 }
+
 a:hover, a:hover span {
   font-weight: 900;
 }
@@ -93,7 +95,8 @@ a:hover, a:hover span {
 .list {
   list-style-type: none;
   margin: 0;
-  padding: 0;  
+  padding: 0;
+
   .active {
     font-weight: bold;
   }
@@ -116,6 +119,7 @@ a:hover, a:hover span {
     line-height: 32px;
     display: inline-block;
   }
+
   .section-title::after {
     content: "";
     position: absolute;
@@ -129,10 +133,12 @@ a:hover, a:hover span {
     border-bottom: 0px solid transparent;
     transition: all .4s ease;
   }
+
   .titles {
     overflow: hidden;
     transition: all 1s ease;
     opacity: 0;
+
     span {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -144,9 +150,11 @@ a:hover, a:hover span {
 
   &:hover {
     max-height: 999px;
+
     .titles {
       opacity: 1;
     }
+
     .section-title::after {
       border-left: 16px solid transparent;
       border-right: 16px solid transparent;
@@ -169,6 +177,7 @@ a:hover, a:hover span {
 .posts {
   position: relative;
   padding: 0;
+  transition: all 2s ease;
 }
 
 .post {
@@ -177,10 +186,16 @@ a:hover, a:hover span {
   left: 0;
   padding: 20px 20px 40px;
   opacity: 0;
-  transition: opacity 1s ease;
+  z-index: -1;
+  transition: all 2s ease;
+  overflow: hidden;
+  transform: scaleY(0);
+
   &.active {
     position: relative;
     opacity: 1;
+    z-index: 1;
+    transform: scaleY(1);
   }
 }
 
@@ -190,30 +205,13 @@ a:hover, a:hover span {
 
 .post-tags {
   display: flex;
+
   p {
     margin: 0 10px 0 0;
   }
 }
 
 /* TESTING VARIABLE HEIGHT TRANSITION */
-
-.posts {
-  transition: all 2s ease;
-}
-
-.post {
-  opacity: 0;
-  z-index: -1;
-  transition: all 2s ease;
-  overflow: hidden;
-  transform: scaleY(0);
-
-  &.active {
-    opacity: 1;
-    z-index: 1;
-    transform: scaleY(1);
-  }
-}
 
 /* Video background */
 
@@ -240,10 +238,12 @@ a:hover, a:hover span {
   .all-posts .titles {
     columns: 2;
   }
+
   .additionals {
     .tags {
       columns: 4;
     }
+
     .authors {
       columns: 2;
     }
@@ -256,30 +256,38 @@ a:hover, a:hover span {
     align-items: stretch;
     flex-wrap: wrap;
   }
+
   .all-posts {
     width: 33.33333%;
     max-height: 100%;
+
     .titles {
       columns: 1;
       opacity: 1;
     }
+
     .show-all::after {
       display: none;
     }
   }
+
   .posts {
     width: calc(66.66666% - 20px);
     margin-left: 20px;
   }
+
   .additionals {
     width: 100%;
     display: flex;
+
     .authors {
       columns: 2;
     }
+
     .tags-section {
       width: 60%;
     }
+
     .authors-section {
       width: 40%;
     }
@@ -290,15 +298,19 @@ a:hover, a:hover span {
   .all-posts, .additionals, .posts article {
     padding: 40px;
   }
+
   body {
     font-size: 18px;
   }
+
   .section-title {
     font-size: 26px;
   }
+
   .post-title {
     font-size: 22px;
   }
+
   .container {
     width: 100%;
     max-width: 960px;
@@ -309,25 +321,32 @@ a:hover, a:hover span {
   .container {
     max-width: 1140px;
   }
+
   .wrapper {
     justify-content: space-between;
   }
+
   .all-posts {
     width: calc(25% - 10px);
   }
+
   .posts {
     width: calc(50% - 20px);
     margin-left: 0;
   }
+
   .additionals {
     width: calc(25% - 10px);
     flex-direction: column;
+
     .tags-section, .authors-section {
       width: 100%;
     }
+
     .tags {
       columns: 1;
     }
+
     .authors {
       columns: 1;
     }
@@ -338,9 +357,8 @@ a:hover, a:hover span {
   .container {
     max-width: 1320px;
   }
+
   .additionals .tags {
     columns: 2;
   }
 }
-
-/* TO jest testowy komentarz do gita */ 
