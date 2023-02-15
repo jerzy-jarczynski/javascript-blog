@@ -180,4 +180,26 @@
   };
 
   addClickListenersToTags();
+
+  const generateAuthors = function() {
+
+  };
+
+  generateAuthors();
+
+  const authorClickHandler = function() {
+
+  };
+
+  const addClickListenersToAuthors = function() {
+
+    const authors = document.querySelectorAll('a[href^="#author-"]');
+
+    for (let author of authors) {
+      author.addEventListener('click', authorClickHandler);
+    }
+
+  };
+
+  addClickListenersToAuthors();
 }
