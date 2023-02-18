@@ -42,7 +42,9 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post .post-author',
-    optTagsListSelector = '.tags.list';
+    optTagsListSelector = '.tags.list',
+    optCloudClassCount = 5,
+    optCloudClassPrefix = 'tag-size-';
 
   const generateTitleLinks = function(customSelector = '') {
 
@@ -85,6 +87,44 @@
   document.querySelector('.posts').style.height = document.querySelector('.posts article.active').offsetHeight + 'px';
 
   document.getElementById('myVideo').play();
+
+  const calculateTagsParams = function(tags) {
+
+    let params = {
+      'min': 0,
+      'max': 0,
+    };
+
+    console.log(tags);
+
+    for (const [key, value] of Object.entries(tags)) {
+      if (value > params.max) {
+        params.max = value;
+      }
+      if (params.min == 0) {
+        params.min = value;
+      } else {
+        if (value < params.min) {
+          params.min = value;
+        }
+      }
+    }
+
+    return params;
+  };
+
+  const calculateTagClass = function(count, params) {
+
+    const normalizedCount = count - params.min;
+
+    const normalizedMax = params.max - params.min;
+
+    const percentage = normalizedCount / normalizedMax;
+
+    const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+
+    return `${optCloudClassPrefix}${classNumber}`;
+  };
 
   const generateTags = function(){
     /* [NEW] create a new variable allTags with an empty object */
@@ -141,6 +181,9 @@
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector(optTagsListSelector);
 
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('tagsParams:', tagsParams);
+
     /* [NEW] create variable for all links HTML code */
     let allTagsHTML = '';
 
@@ -148,7 +191,7 @@
     for(let tag in allTags){
 
       /* [NEW] generate code of a link and add it to allTagsHTML */
-      allTagsHTML += `<li><a href="#tag-${tag}">${tag}</a> <span>${allTags[tag]}</span></li>`;
+      allTagsHTML += `<li class="${calculateTagClass(allTags[tag], tagsParams)}"><a href="#tag-${tag}">${tag}</a></li>`;
 
     }
     /* [NEW] END LOOP: for each tag in allTags: */
