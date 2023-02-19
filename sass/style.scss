@@ -245,6 +245,10 @@ a:hover, a:hover span {
     display: inline-block;
     padding: 5px 10px;
   }
+
+  .author-name {
+    text-transform: capitalize;
+  }
 }
 
 @media (min-width: 576px) {
